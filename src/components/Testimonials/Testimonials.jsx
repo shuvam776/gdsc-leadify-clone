@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 function Testimonials() {
 
@@ -24,33 +24,47 @@ function Testimonials() {
       role: "Founder, GrowthLab"
     },
     {
-        image : "",
-        text : "Something",
-        name : "i dont know man",
-        role : "Neither do i bro",
+      image: "",
+      text: "Something",
+      name: "i dont know man",
+      role: "Neither do i bro",
     },
     {
-       image : "",
-        text : "Something",
-        name : "i dont know man",
-        role : "Neither do i bro",
+      image: "",
+      text: "Something",
+      name: "i dont know man",
+      role: "Neither do i bro",
     },
     {
-        image : "",
-        text : "Something",
-        name : "i dont know man",
-        role : "Neither do i bro",
+      image: "",
+      text: "Something",
+      name: "i dont know man",
+      role: "Neither do i bro",
     },
     {
-        image : "",
-        text : "Something",
-        name : "i dont know man",
-        role : "Neither do i bro",
+      image: "",
+      text: "Something",
+      name: "i dont know man",
+      role: "Neither do i bro",
     },
-    
+
   ]
 
   const [index, setIndex] = useState(0)
+
+  // How many cards are visible at once, depends on screen width
+  const [visibleCards, setVisibleCards] = useState(3)
+
+  useEffect(() => {
+    const update = () => {
+      if (window.innerWidth < 640) setVisibleCards(1)
+      else if (window.innerWidth < 1024) setVisibleCards(2)
+      else setVisibleCards(3)
+    }
+    update()
+    window.addEventListener("resize", update)
+    return () => window.removeEventListener("resize", update)
+  }, [])
 
   const nextCard = () =>
     setIndex((i) => (i + 1) % dummyCardDatas.length)
@@ -58,15 +72,19 @@ function Testimonials() {
   const previousCard = () =>
     setIndex((i) => (i - 1 + dummyCardDatas.length) % dummyCardDatas.length)
 
+  const cardWidthPercent = 100 / visibleCards
+
   return (
     <section className="py-20 bg-white">
-      <div className="flex items-start justify-between max-w-6xl mx-auto mb-16">
 
-        <h2 className="font-serif text-5xl leading-tight">
+      {/* mobile */}
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between max-w-6xl mx-auto px-6 sm:px-10 mb-16 gap-6">
+
+        <h2 className="font-serif text-5xl leading-tight shrink-0">
           What Our <br /> Clients Say
         </h2>
 
-        <p className="relative text-gray-600 w-100 top-10">
+        <p className="text-gray-600 sm:max-w-xs sm:pt-10">
           Real feedback from businesses that use our lead
           generation systems to grow every day.
         </p>
@@ -74,12 +92,12 @@ function Testimonials() {
       </div>
 
       {/* Carousel or Pagination whatever people call it */}
-      <div className="max-w-6xl mx-auto overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 overflow-hidden">
 
         <div
           className="flex gap-6 transition-transform duration-500"
           style={{
-            transform: `translateX(-${index * 33.333}%)`
+            transform: `translateX(-${index * cardWidthPercent}%)`
           }}
         >
 
@@ -87,7 +105,8 @@ function Testimonials() {
 
             <div
               key={i}
-              className="bg-white p-8 rounded-xl shadow-sm min-w-[32%]"
+              className="bg-white p-8 rounded-xl shadow-sm shrink-0"
+              style={{ width: `calc(${cardWidthPercent}% - 24px)` }}
             >
               <div className="mb-4">
                 <img
@@ -117,6 +136,7 @@ function Testimonials() {
         </div>
 
       </div>
+
       {/* the left and right buttons */}
       <div className="flex justify-center gap-6 mt-10">
 
@@ -143,9 +163,8 @@ function Testimonials() {
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`h-2 w-8 rounded-full ${
-              i === index ? "bg-orange-500" : "bg-gray-300"
-            }`}
+            className={`h-2 w-8 rounded-full ${i === index ? "bg-orange-500" : "bg-gray-300"
+              }`}
           />
         ))}
 
