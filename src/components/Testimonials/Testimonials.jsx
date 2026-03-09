@@ -1,4 +1,4 @@
-"use client"
+
 
 import React, { useState } from "react"
 
@@ -59,14 +59,14 @@ function Testimonials() {
     setIndex((i) => (i - 1 + dummyCardDatas.length) % dummyCardDatas.length)
 
   return (
-    <section className="bg-white py-20">
-      <div className="max-w-6xl mx-auto flex justify-between items-start mb-16">
+    <section className="py-20 bg-white">
+      <div className="flex items-start justify-between max-w-6xl mx-auto mb-16">
 
-        <h2 className="text-5xl font-serif leading-tight">
+        <h2 className="font-serif text-5xl leading-tight">
           What Our <br /> Clients Say
         </h2>
 
-        <p className="text-gray-600 w-100 relative top-10">
+        <p className="relative text-gray-600 w-100 top-10">
           Real feedback from businesses that use our lead
           generation systems to grow every day.
         </p>
@@ -77,7 +77,7 @@ function Testimonials() {
       <div className="max-w-6xl mx-auto overflow-hidden">
 
         <div
-          className="flex transition-transform duration-500 gap-6"
+          className="flex gap-6 transition-transform duration-500"
           style={{
             transform: `translateX(-${index * 33.333}%)`
           }}
@@ -93,11 +93,11 @@ function Testimonials() {
                 <img
                   src={card.image}
                   alt={card.name}
-                  className="h-10 w-10 rounded-full object-cover"
+                  className="object-cover w-10 h-10 rounded-full"
                 />
               </div>
 
-              <p className="text-gray-700 mb-6">
+              <p className="mb-6 text-gray-700">
                 "{card.text}"
               </p>
 
@@ -122,14 +122,14 @@ function Testimonials() {
 
         <button
           onClick={previousCard}
-          className="border px-4 py-2 rounded-md"
+          className="px-4 py-2 border rounded-md"
         >
           ←
         </button>
 
         <button
           onClick={nextCard}
-          className="border px-4 py-2 rounded-md"
+          className="px-4 py-2 border rounded-md"
         >
           →
         </button>
