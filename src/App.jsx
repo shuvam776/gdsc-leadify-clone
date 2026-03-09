@@ -13,11 +13,11 @@ function App() {
       <style>{`
         body { margin: 0; background-color: #1a1a1a; }
       `}</style>
-      <Hero/>
+      {/* <Hero/> */}
       <CTA/>
-      <RealResults />
+      {/* <RealResults /> */}
       <Testominals/>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
