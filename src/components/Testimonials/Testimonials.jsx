@@ -1,4 +1,4 @@
-
+"use client"
 
 import React, { useState } from "react"
 
@@ -6,19 +6,19 @@ function Testimonials() {
 
   const dummyCardDatas = [
     {
-      image: "/assets/avatar1.jpg",
+      image: "https://res.cloudinary.com/dpju1wia5/image/upload/v1769274336/cld-sample.jpg",
       text: "Working with this agency completely transformed our digital presence. Our inbound leads increased by 3x in just 60 days.",
       name: "Sarah Thompson",
       role: "Head of Marketing, Fintechly"
     },
     {
-      image: "/assets/avatar2.jpg",
+      image: "https://res.cloudinary.com/dpju1wia5/image/upload/v1769274334/samples/woman-on-a-football-field.jpg",
       text: "They don't just design — they think like business partners. Every decision was backed by strategy and data.",
       name: "Michael Chen",
       role: "Product Manager, SaaScore"
     },
     {
-      image: "/assets/avatar3.jpg",
+      image: "https://res.cloudinary.com/dpju1wia5/image/upload/v1769274332/samples/man-portrait.jpg",
       text: "From branding to website performance marketing — everything felt aligned. Best agency experience we've had.",
       name: "Daniel Roberts",
       role: "Founder, GrowthLab"
